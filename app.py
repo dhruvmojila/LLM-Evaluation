@@ -7,6 +7,7 @@ st.title("🤖 LLM Evaluation")
 pages = [
         st.Page("GenerateModelTraces.py", title="Generate Traces"),
         st.Page("LLMasjudge.py", title="LLM as a Judge"),
+        st.Page("evaluationwithexistingdata.py", title="Evaluate with existing data"),
     ]
 
 pg = st.navigation(pages)

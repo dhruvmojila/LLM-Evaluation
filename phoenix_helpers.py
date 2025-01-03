@@ -4,6 +4,7 @@ import phoenix as px
 import pandas as pd
 from dotenv import load_dotenv
 from phoenix.trace import SpanEvaluations
+from phoenix.evals import HallucinationEvaluator, LiteLLMModel, QAEvaluator, run_evals
 
 load_dotenv()
 import os
@@ -91,3 +92,28 @@ def evaluate_model(df, model, LLM_EVALUATOR_TEMPLATE=LLM_EVALUATOR_TEMPLATE):
   df['score' ] = df['label'].apply(lambda x: 1 if x == 'VALID' else 0)
   px.Client().log_evaluations(SpanEvaluations(eval_name="Response Format", dataframe=df))
   return df
+
+def get_dataset(name):
+  dataset = px.Client().get_dataset(name=name)
+  return dataset
+
+def dataEvalResults(model, df):
+  eval_model = LiteLLMModel(model=f"groq/{model}")
+
+  hallucination_evaluator = HallucinationEvaluator(eval_model)
+  qa_evaluator = QAEvaluator(eval_model)
+
+  df["reference"] = df["metadata"]
+  assert all(column in df.columns for column in ["output", "input", "reference"])
+
+  hallucination_eval_df, qa_eval_df = run_evals(
+      dataframe=df, evaluators=[hallucination_evaluator, qa_evaluator], provide_explanation=True
+  )
+
+  results_df = df.copy()
+  results_df["hallucination_eval"] = hallucination_eval_df["label"]
+  results_df["hallucination_explanation"] = hallucination_eval_df["explanation"]
+  results_df["qa_eval"] = qa_eval_df["label"]
+  results_df["qa_explanation"] = qa_eval_df["explanation"]
+  
+  return results_df
