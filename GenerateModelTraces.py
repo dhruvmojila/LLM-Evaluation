@@ -30,6 +30,7 @@ if models:
                 st.session_state.spans_df = phoenix_helpers.get_spans_df()
                 # print(spans_df)
                 st.dataframe(st.session_state.spans_df)
+                st.session_state.prompt = ""
             else:
                 st.write("Enter something to generate content.")
 

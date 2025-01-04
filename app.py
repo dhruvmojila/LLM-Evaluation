@@ -8,6 +8,7 @@ pages = [
         st.Page("GenerateModelTraces.py", title="Generate Traces"),
         st.Page("LLMasjudge.py", title="LLM as a Judge"),
         st.Page("evaluationwithexistingdata.py", title="Evaluate with existing data"),
+        st.Page("experiments.py", title="Run Experiment"),
     ]
 
 pg = st.navigation(pages)
