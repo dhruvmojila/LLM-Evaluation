@@ -106,6 +106,11 @@ You are an evaluator. Your job is to decide if the provided answer is a valid re
 - Do not provide extra information, summaries, or comments outside the specified format.
 - The output must consist only of the explanation and label in the specified format.
 
+**Instructions on when to give INVALID:**
+1. You can use your knowledegd and if the answer is false you give INVALID.
+2. If you think answer is Hallucination give INVALID
+3. If answer contains content which give you sense that actual answer is not provided or there is lack in knowledged or denial to answer give INVALID.
+
 ### Input:
 Question:
 {question}
