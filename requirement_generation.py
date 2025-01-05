@@ -24,5 +24,5 @@ def create_requirements_file(library_names, output_file='requirements.txt'):
     print(f"Requirements file '{output_file}' has been created successfully!")
 
 # Example usage:
-library_list = ['arize-phoenix', 'arize-phoenix-otel', 'openinference-instrumentation-groq', 'groq', 'sentence-transformers', 'pandas', 'python-dotenv', 'streamlit','plotly']  # Replace with your libraries
+library_list = ['arize-phoenix', 'arize-phoenix-otel', 'openinference-instrumentation-groq', 'groq', 'sentence-transformers', 'pandas', 'python-dotenv', 'streamlit','plotly','litellm']  # Replace with your libraries
 create_requirements_file(library_list)
