@@ -8,7 +8,7 @@ In the ever-evolving landscape of AI, evaluating Large Language Models (LLMs) ha
 ## 🎥 Demo Walkthrough
 👉 **[Watch the video walkthrough](https://youtu.be/J7Tv_zZ_bpQ)**
 
-👉 **[Try the app](#)**
+👉 **[Try the app](https://dhruv-mojila-llm-evaluation.streamlit.app/)**
 
 ---
 
